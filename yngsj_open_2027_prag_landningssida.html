@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="sv" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yngsjö Open 2027 — Prag | HHH vs. HGC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              950: '#07140e',
+              900: '#0d2118',
+              800: '#133023',
+              700: '#1b4331',
+            },
+            brass: {
+              300: '#e5cd96',
+              400: '#d6b774',
+              500: '#c8a45d',
+              600: '#a5823d',
+            },
+            ivory: {
+              50: '#fcfbf7',
+              100: '#f7f5ef',
+              200: '#ebe6d8',
+              300: '#d8d0bc',
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* Fast helsidesbakgrund med vandringspokalen */
+    .ambient-trophy-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: url('WhatsApp Image 2026-11-18 at 04.33.14 (20).jpeg');
+      background-size: cover;
+      background-position: center 25%;
+      background-repeat: no-repeat;
+      filter: contrast(1.08) saturate(1.05) brightness(0.88);
+      transform: scale(1.03);
+      pointer-events: none;
+    }
+
+    /* Dynamisk tonings-overlay över den fasta pokalbakgrunden */
+    .ambient-trophy-tint {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 50% 28%, rgba(13, 33, 24, 0.34) 0%, rgba(13, 33, 24, 0.78) 62%, rgba(7, 20, 14, 0.92) 100%),
+        linear-gradient(180deg, rgba(7, 20, 14, 0.55) 0%, rgba(13, 33, 24, 0.72) 50%, rgba(7, 20, 14, 0.90) 100%);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+
+    /* Extra kontrast-vignette i Hero så att pokalen lyser i mitten bakom titeln */
+    .hero-center-stage {
+      background:
+        radial-gradient(circle at 50% 42%, rgba(200, 164, 93, 0.14) 0%, rgba(13, 33, 24, 0.38) 42%, rgba(7, 20, 14, 0.86) 100%);
+    }
+
+    /* Glaspaneler i djup skogsgrön som släpper igenom pokalens skimmer */
+    .glass-forest {
+      background-color: rgba(13, 33, 24, 0.74);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(200, 164, 93, 0.28);
+      box-shadow: 0 24px 60px -15px rgba(4, 12, 8, 0.78);
+    }
+
+    .glass-forest-card {
+      background-color: rgba(10, 26, 19, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(200, 164, 93, 0.30);
+      box-shadow: 0 20px 50px -12px rgba(4, 12, 8, 0.82);
+    }
+
+    .gold-hairline {
+      border-color: rgba(200, 164, 93, 0.28);
+    }
+
+    /* "Ren pokalvy"-läge när användaren vill beundra bakgrunden */
+    body.trophy-focus .ambient-trophy-tint {
+      opacity: 0.35;
+    }
+    body.trophy-focus .glass-forest,
+    body.trophy-focus .glass-forest-card {
+      background-color: rgba(13, 33, 24, 0.36);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+  </style>
+</head>
+<body class="bg-forest-900 text-ivory-100 font-sans antialiased selection:bg-brass-500 selection:text-forest-950 overflow-x-hidden">
+
+  <!-- FAST HEL-SIDES BAKGRUNDSBILD MED YNGSJÖ OPEN-POKALEN -->
+  <div class="ambient-trophy-bg" role="img" aria-label="Yngsjö Open officiella vandringspokal"></div>
+  <div class="ambient-trophy-tint"></div>
+
+  <!-- ALLT INNEHÅLL LIGGER OVANPÅ BAKGRUNDEN (z-10) -->
+  <div class="relative z-10">
+
+    <!-- TOPPNAVIGERING -->
+    <header class="sticky top-0 z-40 bg-forest-950/85 backdrop-blur-md border-b gold-hairline">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+        <!-- Klubbmärke (Tall & korsade klubbor) -->
+        <a href="#top" class="flex items-center gap-3 group shrink-0">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-forest-800/90 border border-brass-500/55 flex items-center justify-center shadow-inner group-hover:border-brass-300 transition">
+            <svg class="w-6 h-6 text-brass-400" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="18" r="15.5" stroke-opacity="0.45" />
+              <path d="M18 8v18" />
+              <path d="M12 13c2.5-2.5 9.5-2.5 12 0" />
+              <path d="M10.5 17.5c3.5-2 11.5-2 15 0" />
+              <path d="M11 26L25 11" stroke-opacity="0.8" />
+              <path d="M25 26L11 11" stroke-opacity="0.8" />
+            </svg>
+          </div>
+          <div>
+            <span class="block font-serif text-lg sm:text-xl font-bold tracking-wider text-ivory-50 uppercase leading-none">Yngsjö Open</span>
+            <span class="block text-[10px] sm:text-[11px] tracking-[0.22em] text-brass-400 uppercase mt-1">Prag 2027 • HHH vs. HGC</span>
+          </div>
+        </a>
+
+        <!-- Desktop-länkar -->
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-ivory-200/90">
+          <a href="#format-lag" class="hover:text-brass-400 transition">Format &amp; Lag</a>
+          <a href="#program" class="hover:text-brass-400 transition">Program (Prag)</a>
+          <a href="#minnen" class="hover:text-brass-400 transition">Minnen från förr</a>
+          <a href="#rsvp" class="hover:text-brass-400 transition">Anmälan (RSVP)</a>
+        </nav>
+
+        <!-- Högerknappar: Pokal-vy toggle, Live Scoring & Mobilmeny -->
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <button
+            id="trophyFocusBtn"
+            type="button"
+            onclick="toggleTrophyFocus()"
+            title="Växla transparent pokalbakgrund"
+            class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-forest-800/80 hover:bg-forest-700/90 text-ivory-200 border border-brass-500/35 text-xs font-medium transition"
+          >
+            <svg class="w-3.5 h-3.5 text-brass-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            <span id="trophyFocusLabel">Pokalvy</span>
+          </button>
+
+          <a href="scoring.html" class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl bg-brass-500 hover:bg-brass-400 text-forest-950 font-semibold text-xs sm:text-sm tracking-wide shadow-lg shadow-black/40 transition">
+            <span class="w-2 h-2 rounded-full bg-forest-950 animate-pulse"></span>
+            <span>Live Scoring</span>
+          </a>
+
+          <button id="mobileMenuBtn" type="button" aria-label="Öppna meny" class="lg:hidden p-2.5 rounded-xl bg-forest-800/85 border border-brass-500/35 text-ivory-100 hover:border-brass-400 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobilmeny -->
+      <div id="mobileMenu" class="hidden lg:hidden bg-forest-950/95 backdrop-blur-xl border-t gold-hairline px-4 py-4 space-y-2">
+        <a href="#format-lag" class="block px-3 py-2.5 rounded-xl text-ivory-100 hover:bg-forest-800/80 hover:text-brass-400 transition">Format &amp; Lag (HHH vs. HGC)</a>
+        <a href="#program" class="block px-3 py-2.5 rounded-xl text-ivory-100 hover:bg-forest-800/80 hover:text-brass-400 transition">Program — Prag 2027</a>
+        <a href="#minnen" class="block px-3 py-2.5 rounded-xl text-ivory-100 hover:bg-forest-800/80 hover:text-brass-400 transition">Minnen från förr</a>
+        <a href="#rsvp" class="block px-3 py-2.5 rounded-xl text-ivory-100 hover:bg-forest-800/80 hover:text-brass-400 transition">Anmälan (RSVP)</a>
+        <button type="button" onclick="toggleTrophyFocus()" class="w-full text-left px-3 py-2.5 rounded-xl text-brass-300 hover:bg-forest-800/80 transition">
+          Växla genomskinlig pokalbakgrund
+        </button>
+        <a href="scoring.html" class="block px-3 py-2.5 rounded-xl bg-brass-500/20 border border-brass-500/45 text-brass-300 font-semibold">Öppna Live Scoring &amp; Leaderboard →</a>
+      </div>
+    </header>
+
+    <!-- HERO-SEKTION MED CENTRERAD POKALBAKGRUND & GLAS-KORT -->
+    <section id="top" class="hero-center-stage min-h-[90vh] flex items-center justify-center py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b gold-hairline">
+      <div class="max-w-5xl mx-auto w-full text-center flex flex-col items-center">
+        <!-- Datum- & Platsbricka -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-forest-950/75 border border-brass-500/50 backdrop-blur-md shadow-lg mb-6">
+          <span class="w-2 h-2 rounded-full bg-brass-400"></span>
+          <span class="text-[11px] sm:text-xs font-semibold tracking-[0.24em] uppercase text-brass-300">20 – 23 Maj 2027 • Prag, Tjeckien</span>
+        </div>
+
+        <!-- Huvudrubrik som låter pokalen skina rakt bakom i centrum -->
+        <h1 class="font-serif text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-ivory-50 leading-[1.03] drop-shadow-[0_6px_28px_rgba(0,0,0,0.85)]">
+          Yngsjö Open
+          <span class="block text-transparent bg-clip-text bg-gradient-to-r from-brass-300 via-brass-400 to-brass-500 italic font-bold mt-1">
+            2027
+          </span>
+        </h1>
+
+        <p class="mt-5 text-base sm:text-xl lg:text-2xl font-serif italic text-ivory-100 max-w-2xl drop-shadow-[0_3px_16px_rgba(0,0,0,0.9)]">
+          HHH vs. HGC — Mästerskapshelgen på Casa Serena Golf Course
+        </p>
+
+        <!-- Glaspanel med Nedräkning till 20 maj 2027 -->
+        <div class="mt-9 w-full max-w-2xl rounded-3xl glass-forest-card p-5 sm:p-7">
+          <p class="text-[11px] uppercase tracking-[0.25em] text-brass-400 font-semibold mb-4">Nedräkning till första tee i Prag</p>
+          <div class="grid grid-cols-4 gap-2.5 sm:gap-4" id="countdownGrid">
+            <div class="rounded-2xl bg-forest-950/75 border border-brass-500/30 py-3 sm:py-4 px-2">
+              <span id="cdDays" class="block font-serif text-2xl sm:text-4xl font-bold text-ivory-50">--</span>
+              <span class="block text-[10px] sm:text-xs uppercase tracking-widest text-brass-400 mt-1">Dagar</span>
+            </div>
+            <div class="rounded-2xl bg-forest-950/75 border border-brass-500/30 py-3 sm:py-4 px-2">
+              <span id="cdHours" class="block font-serif text-2xl sm:text-4xl font-bold text-ivory-50">--</span>
+              <span class="block text-[10px] sm:text-xs uppercase tracking-widest text-brass-400 mt-1">Timmar</span>
+            </div>
+            <div class="rounded-2xl bg-forest-950/75 border border-brass-500/30 py-3 sm:py-4 px-2">
+              <span id="cdMinutes" class="block font-serif text-2xl sm:text-4xl font-bold text-ivory-50">--</span>
+              <span class="block text-[10px] sm:text-xs uppercase tracking-widest text-brass-400 mt-1">Minuter</span>
+            </div>
+            <div class="rounded-2xl bg-forest-950/75 border border-brass-500/30 py-3 sm:py-4 px-2">
+              <span id="cdSeconds" class="block font-serif text-2xl sm:text-4xl font-bold text-brass-300">--</span>
+              <span class="block text-[10px] sm:text-xs uppercase tracking-widest text-brass-400 mt-1">Sekunder</span>
+            </div>
+          </div>
+
+          <!-- CTA-knappar -->
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-3.5">
+            <a href="#format-lag" class="px-6 py-3.5 rounded-2xl bg-forest-900/85 hover:bg-forest-800 text-ivory-100 border border-brass-500/45 font-medium text-sm sm:text-base transition">
+              Mästerskapet &amp; Lagen
+            </a>
+            <a href="scoring.html" class="px-6 py-3.5 rounded-2xl bg-brass-500 hover:bg-brass-400 text-forest-950 font-semibold text-sm sm:text-base tracking-wide shadow-xl shadow-black/50 transition flex items-center gap-2">
+              <span>Live Scoring (Casa Serena)</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEKTION 1: FORMAT & LAG — HHH VS. HGC MED LAGBILDER & SPELARLISTOR -->
+    <section id="format-lag" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-b gold-hairline">
+      <div class="max-w-7xl mx-auto">
+        <!-- Rubrik i glaspanel -->
+        <div class="rounded-3xl glass-forest p-7 sm:p-10 text-center max-w-4xl mx-auto mb-12 sm:mb-16">
+          <span class="text-xs font-semibold tracking-[0.25em] uppercase text-brass-400">Ryder Cup-duellen</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ivory-50 mt-2">Format &amp; Lag: HHH vs. HGC</h2>
+          <p class="text-ivory-200/90 text-sm sm:text-base mt-3 leading-relaxed max-w-2xl mx-auto">
+            Tjugoen spelare fördelade på <strong class="text-ivory-50">Team HHH</strong> och <strong class="text-ivory-50">Team HGC</strong> gör upp om den graverade vandringspokalen på Casa Serena Golf Course.
+          </p>
+        </div>
+
+        <!-- Lagkort: HHH & HGC -->
+        <div class="grid lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+
+          <!-- LAG HHH (10 SPELARE) -->
+          <article class="rounded-3xl glass-forest-card overflow-hidden flex flex-col">
+            <!-- Lagbildsbanner i 4:3-format så att plaketten TEAM HHH • YNGSJÖ OPEN syns helt fritt -->
+            <div class="relative aspect-[4/3] w-full overflow-hidden group bg-forest-950 border-b gold-hairline">
+              <img
+                id="teamHhhImg"
+                src="f79054a7.jpeg"
+                alt="Team HHH • Yngsjö Open"
+                data-fallbacks='["watermarked_img_10466989843910586616.jpg","WhatsApp Image 2026-11-18 at 04.33.14 (11)_2.jpeg","WhatsApp Image 2026-11-18 at 04.33.14 (11).jpeg"]'
+                onerror="handleImageFallback(this, 'TEAM HHH • YNGSJÖ OPEN')"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-700"
+              />
+              <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-forest-950/85 via-forest-950/35 to-transparent pointer-events-none"></div>
+
+              <!-- Uppe till vänster: Klubbmärke + Lagbadge -->
+              <div class="absolute top-3.5 left-3.5 flex items-center gap-2.5">
+                <div class="w-11 h-11 rounded-full bg-forest-950/90 border-2 border-brass-400/75 flex items-center justify-center shadow-lg">
+                  <span class="font-serif font-bold text-xs sm:text-sm text-brass-300 tracking-wider">HHH</span>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-forest-950/85 border border-brass-500/45 text-xs font-semibold uppercase tracking-widest text-ivory-50 backdrop-blur-md">
+                  Team HHH
+                </span>
+              </div>
+            </div>
+
+            <!-- Lagrubrik & spelarantal under bilden så att guldplaketten i fotot syns helt fritt -->
+            <div class="px-6 sm:px-8 pt-5 pb-3 flex items-center justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-ivory-50 leading-none">HHH</h3>
+                <p id="teamHhhCaption" class="text-xs text-ivory-200/80 mt-1.5">Officiellt lagporträtt • Team HHH • Yngsjö Open</p>
+              </div>
+              <span id="countHhhBadge" class="px-3.5 py-1.5 rounded-xl bg-forest-900/90 border border-brass-500/45 text-brass-300 text-xs font-semibold shrink-0">
+                10 Spelare
+              </span>
+            </div>
+
+            <!-- Spelarlista HHH -->
+            <div class="px-6 sm:px-8 pb-6 sm:pb-8 pt-2 flex-1">
+              <div class="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-brass-400 pb-3 mb-4 border-b gold-hairline">
+                <span>Spelartrupp HHH</span>
+                <span>HCP / Kommentar</span>
+              </div>
+              <ul id="rosterHhh" class="grid sm:grid-cols-2 gap-2.5"></ul>
+            </div>
+          </article>
+
+          <!-- LAG HGC (11 SPELARE) -->
+          <article class="rounded-3xl glass-forest-card overflow-hidden flex flex-col">
+            <!-- Lagbildsbanner i 4:3-format så att plaketten TEAM HGC • YNGSJÖ OPEN syns helt fritt -->
+            <div class="relative aspect-[4/3] w-full overflow-hidden group bg-forest-950 border-b gold-hairline">
+              <img
+                id="teamHgcImg"
+                src="11a32b87.jpeg"
+                alt="Team HGC • Yngsjö Open"
+                data-fallbacks='["watermarked_img_9059187788242090440.jpg","WhatsApp Image 2026-11-18 at 04.33.14 (4)_2.jpeg","WhatsApp Image 2026-11-18 at 04.33.14 (4).jpeg"]'
+                onerror="handleImageFallback(this, 'TEAM HGC • YNGSJÖ OPEN')"
+                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-700"
+              />
+              <div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-forest-950/85 via-forest-950/35 to-transparent pointer-events-none"></div>
+
+              <!-- Uppe till vänster: Klubbmärke + Lagbadge -->
+              <div class="absolute top-3.5 left-3.5 flex items-center gap-2.5">
+                <div class="w-11 h-11 rounded-full bg-forest-950/90 border-2 border-brass-400/75 flex items-center justify-center shadow-lg">
+                  <span class="font-serif font-bold text-xs sm:text-sm text-brass-300 tracking-wider">HGC</span>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-forest-950/85 border border-brass-500/45 text-xs font-semibold uppercase tracking-widest text-ivory-50 backdrop-blur-md">
+                  Team HGC
+                </span>
+              </div>
+            </div>
+
+            <!-- Lagrubrik & spelarantal under bilden så att guldplaketten i fotot syns helt fritt -->
+            <div class="px-6 sm:px-8 pt-5 pb-3 flex items-center justify-between gap-3">
+              <div>
+                <h3 class="font-serif text-3xl sm:text-4xl font-bold text-ivory-50 leading-none">HGC</h3>
+                <p id="teamHgcCaption" class="text-xs text-ivory-200/80 mt-1.5">Officiellt lagporträtt • Team HGC • Yngsjö Open</p>
+              </div>
+              <span id="countHgcBadge" class="px-3.5 py-1.5 rounded-xl bg-forest-900/90 border border-brass-500/45 text-brass-300 text-xs font-semibold shrink-0">
+                11 Spelare
+              </span>
+            </div>
+
+            <!-- Spelarlista HGC -->
+            <div class="px-6 sm:px-8 pb-6 sm:pb-8 pt-2 flex-1">
+              <div class="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-brass-400 pb-3 mb-4 border-b gold-hairline">
+                <span>Spelartrupp HGC</span>
+                <span>HCP / Kommentar</span>
+              </div>
+              <ul id="rosterHgc" class="grid sm:grid-cols-2 gap-2.5"></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEKTION 2: PROGRAM — PRAG 2027 (TORSDAG – LÖRDAG) -->
+    <section id="program" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-b gold-hairline">
+      <div class="max-w-7xl mx-auto">
+        <div class="rounded-3xl glass-forest p-7 sm:p-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span class="text-xs font-semibold tracking-[0.25em] uppercase text-brass-400">Officiellt Schema</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ivory-50 mt-2">Program — Prag 2027</h2>
+          </div>
+          <p class="text-ivory-200/85 text-sm sm:text-base max-w-md">
+            Tre dagar i Prag: öppningsmiddag, pro clinic på Albatross, hemlig eftermiddag hos Dopeyeah, middag i Nebušice och finaldag på Casa Serena.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- TORSDAG -->
+          <div class="rounded-3xl glass-forest-card p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="px-3.5 py-1 rounded-full bg-brass-500/15 border border-brass-500/40 text-brass-300 text-xs font-bold uppercase tracking-wider">Torsdag • 20 Maj</span>
+                <span class="text-xs text-ivory-300/75">Prag</span>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-ivory-50 mb-4">Ankomst &amp; Öppningsmiddag</h3>
+              <ul class="space-y-4 text-sm text-ivory-200/90 leading-relaxed">
+                <li class="flex gap-3">
+                  <span class="text-brass-400 font-semibold shrink-0 w-16">Efterm.</span>
+                  <span>Ankomst till Prag, incheckning och gemensam samling med välkomstskål.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-brass-400 font-semibold shrink-0 w-16">Kväll</span>
+                  <span><strong class="text-ivory-50">Gemensam öppningsmiddag i stan</strong> med genomgång av helgens laguppställningar och matcher.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-8 pt-4 border-t gold-hairline flex items-center justify-between text-xs text-ivory-300/80">
+              <span>Prags stadskärna</span>
+              <span class="text-brass-400 font-medium">Kick-off</span>
+            </div>
+          </div>
+
+          <!-- FREDAG -->
+          <div class="rounded-3xl glass-forest-card p-6 sm:p-8 flex flex-col justify-between border-brass-400/50">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="px-3.5 py-1 rounded-full bg-brass-500 text-forest-950 text-xs font-bold uppercase tracking-wider">Fredag • 21 Maj</span>
+                <span class="text-xs text-brass-300 font-medium">Albatross &amp; Nebušice</span>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-ivory-50 mb-4">Pro Clinic, Dopeyeah &amp; Middag</h3>
+              <ul class="space-y-4 text-sm text-ivory-200/90 leading-relaxed">
+                <li class="flex gap-3">
+                  <span class="text-brass-400 font-semibold shrink-0 w-16">Förm.</span>
+                  <span><strong class="text-ivory-50">Pro clinic med tränare på Albatross Golf Resort</strong> — finslipning av sving och närspel inför lördagens drabbning.</span>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-brass-400 font-semibold shrink-0 w-16">15:00</span>
+                  <div>
+                    <strong class="text-ivory-50">Överraskningsevent på Dopeyeah</strong> — adrenalinevent och lagduell i Prag.
+                    <div class="grid grid-cols-2 gap-2.5 mt-3">
+                      <button type="button" onclick="openLightboxBySrc('7e95bd89.jpeg', 'Fredag 15:00 — Överraskningsevent på Dopeyeah')" class="group relative rounded-xl overflow-hidden border border-brass-500/35 aspect-[16/10] bg-forest-950">
+                        <img src="7e95bd89.jpeg" alt="Dopeyeah Prag 1" data-fallbacks='["WhatsApp Image 2026-11-18 at 04.33.15 (2).jpeg"]' onerror="handleImageFallback(this, 'Dopeyeah 15:00')" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                      </button>
+                      <button type="button" onclick="openLightboxBySrc('b96f88ba.jpeg', 'Fredag 15:00 — Dopeyeah Prag')" class="group relative rounded-xl overflow-hidden border border-brass-500/35 aspect-[16/10] bg-forest-950">
+                        <img src="b96f88ba.jpeg" alt="Dopeyeah Prag 2" data-fallbacks='["WhatsApp Image 2026-11-18 at 04.33.15 (2)_2.jpeg"]' onerror="handleImageFallback(this, 'Dopeyeah Arena')" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                      </button>
+                    </div>
+                  </div>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-brass-400 font-semibold shrink-0 w-16">19:00</span>
+                  <span><strong class="text-ivory-50">Middag hemma hos Magnus</strong> (Požárnická 441, Nebušice) följt av <strong class="text-ivory-50">utgång i Prag</strong>.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-8 pt-4 border-t gold-hairline flex items-center justify-between text-xs text-ivory-300/80">
+              <span>Albatross → Dopeyeah → Nebušice</span>
+              <span class="text-brass-400 font-medium">Uppladdning</span>
+            </div>
+          </div>
+
+          <!-- LÖRDAG -->
+          <div class="rounded-3xl glass-forest-card p-6 sm:p-8 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-6">
+                <span class="px-3.5 py-1 rounded-full bg-brass-500/15 border border-brass-500/40 text-brass-300 text-xs font-bold uppercase tracking-wider">Lördag • 22 Maj</span>
+                <span class="text-xs text-ivory-300/75">Casa Serena (Par 71)</span>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-ivory-50 mb-4">Mästerskapsdagen på Casa Serena</h3>
+              <ul class="space-y-3.5 text-sm text-ivory-200/90 leading-relaxed">
+                <li class="flex gap-3">
+                  <span class="text-brass-400 font-semibold shrink-0 w-16">Tidigt</span>
+                  <span>Gemensam transport till <strong class="text-ivory-50">Casa Serena Golf Course (Par 71)</strong>.</span>
+                </li>
+                <li class="rounded-2xl bg-forest-950/70 border border-brass-500/25 p-3.5 space-y-1.5">
+                  <p class="text-xs uppercase tracking-wider text-brass-400 font-semibold">Tre tävlingspass (Live i appen)</p>
+                  <p class="text-xs sm:text-sm text-ivory-100">• <strong>Session 1:</strong> Fyrboll (Four-Ball)</p>
+                  <p class="text-xs sm:text-sm text-ivory-100">• <strong>Session 2:</strong> Greensome</p>
+                  <p class="text-xs sm:text-sm text-ivory-100">• <strong>Session 3:</strong> Avgörande Singelmatcher</p>
+                </li>
+                <li class="flex gap-3">
+                  <span class="text-brass-400 font-semibold shrink-0 w-16">Kväll</span>
+                  <span><strong class="text-ivory-50">Middag &amp; prisutdelning på klubben</strong> där vinnarna höjer Yngsjö Open-pokalen, följt av sen transport in till stan.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-8 pt-4 border-t gold-hairline flex items-center justify-between">
+              <span class="text-xs text-ivory-300/80">Följ ställningen hål för hål</span>
+              <a href="scoring.html" class="text-xs font-semibold text-brass-400 hover:text-brass-300 transition">Öppna Live Scoring →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEKTION 3: MINNEN FRÅN FÖRR (SAMTLIGA FOTON I ETT ENHETLIGT GALLERI) -->
+    <section id="minnen" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-b gold-hairline">
+      <div class="max-w-7xl mx-auto">
+        <!-- Rubrik -->
+        <div class="rounded-3xl glass-forest p-7 sm:p-10 mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span class="text-xs font-semibold tracking-[0.25em] uppercase text-brass-400">Klubbens Historik</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ivory-50 mt-2">Minnen från förr</h2>
+            <p class="text-ivory-200/85 text-sm sm:text-base mt-2 max-w-2xl">
+              Samtliga klassiska ögonblick från Yngsjö Open, strandbad, simulatorer, vandringspokalen och rekognoseringen inför Prag samlade på ett ställe. Klicka på valfritt foto för att öppna i helskärm.
+            </p>
+          </div>
+          <span class="px-4 py-2 rounded-xl bg-forest-950/75 border border-brass-500/35 text-xs sm:text-sm font-semibold text-brass-300 shrink-0 self-start sm:self-auto">
+            <span id="totalPhotoCount">0</span> Foton
+          </span>
+        </div>
+
+        <!-- Enhetligt Bildgalleri utan foldrar/flikar/uppladdningsboxar -->
+        <div id="galleryGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+      </div>
+    </section>
+
+    <!-- SEKTION 4: INTERAKTIV ANMÄLAN (RSVP) -->
+    <section id="rsvp" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto rounded-3xl glass-forest-card p-7 sm:p-12">
+        <div class="text-center mb-8">
+          <span class="text-xs font-semibold tracking-[0.25em] uppercase text-brass-400">Bekräfta din plats</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-ivory-50 mt-2">Anmälan — Prag 2027</h2>
+          <p class="text-ivory-200/85 text-sm sm:text-base mt-2">
+            Registrera ditt aktuella handicap och skicka en hälsning till motståndarlaget — uppdaterar laguppställningen direkt på sidan.
+          </p>
+        </div>
+
+        <form id="rsvpForm" class="space-y-5">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="rsvpName" class="block text-xs uppercase tracking-wider text-brass-300 font-semibold mb-2">Spelarens namn</label>
+              <input
+                id="rsvpName"
+                type="text"
+                required
+                placeholder="För- och efternamn"
+                class="w-full px-4 py-3 rounded-xl bg-forest-950/80 border border-brass-500/35 text-ivory-50 placeholder-ivory-300/40 focus:outline-none focus:border-brass-400"
+              />
+            </div>
+
+            <div>
+              <label for="rsvpTeam" class="block text-xs uppercase tracking-wider text-brass-300 font-semibold mb-2">Välj lag</label>
+              <select
+                id="rsvpTeam"
+                class="w-full px-4 py-3 rounded-xl bg-forest-950/80 border border-brass-500/35 text-ivory-50 focus:outline-none focus:border-brass-400"
+              >
+                <option value="hhh">Team HHH</option>
+                <option value="hgc">Team HGC</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="rsvpHcp" class="block text-xs uppercase tracking-wider text-brass-300 font-semibold mb-2">Exakt Handicap (HCP)</label>
+              <input
+                id="rsvpHcp"
+                type="number"
+                step="0.1"
+                min="-5"
+                max="54"
+                placeholder="t.ex. 12.4"
+                class="w-full px-4 py-3 rounded-xl bg-forest-950/80 border border-brass-500/35 text-ivory-50 placeholder-ivory-300/40 focus:outline-none focus:border-brass-400"
+              />
+            </div>
+
+            <div>
+              <label for="rsvpNote" class="block text-xs uppercase tracking-wider text-brass-300 font-semibold mb-2">Trash Talk / Kommentar</label>
+              <input
+                id="rsvpNote"
+                type="text"
+                placeholder="t.ex. Bucklan stannar i HHH!"
+                class="w-full px-4 py-3 rounded-xl bg-forest-950/80 border border-brass-500/35 text-ivory-50 placeholder-ivory-300/40 focus:outline-none focus:border-brass-400"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-4 rounded-2xl bg-brass-500 hover:bg-brass-400 text-forest-950 font-semibold text-sm sm:text-base tracking-wide shadow-xl shadow-black/40 transition"
+          >
+            Bekräfta anmälan &amp; uppdatera laguppställning
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SIDFOT -->
+    <footer class="bg-forest-950/90 backdrop-blur-md border-t gold-hairline py-10 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <p class="font-serif text-lg font-bold text-ivory-50">Yngsjö Open 2027 — Prag</p>
+          <p class="text-xs text-ivory-300/70">HHH vs. HGC • Albatross Golf Resort &amp; Casa Serena Golf Course</p>
+        </div>
+        <div class="flex items-center gap-6 text-xs sm:text-sm text-ivory-200/80">
+          <a href="#top" class="hover:text-brass-400 transition">Toppen</a>
+          <a href="#format-lag" class="hover:text-brass-400 transition">Lagen</a>
+          <a href="#program" class="hover:text-brass-400 transition">Program</a>
+          <a href="#minnen" class="hover:text-brass-400 transition">Minnen</a>
+          <a href="scoring.html" class="text-brass-400 font-semibold hover:text-brass-300 transition">Live Scoring →</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- LIGHTBOX MODAL FÖR HELSKÄRMSVISNING -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-forest-950/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8" onclick="closeLightbox()">
+    <div class="relative max-w-5xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
+      <div class="w-full flex items-center justify-between mb-3 text-ivory-100">
+        <span id="lightboxCounter" class="text-xs uppercase tracking-[0.2em] text-brass-400 font-semibold">1 / 41</span>
+        <button type="button" onclick="closeLightbox()" class="px-3.5 py-1.5 rounded-xl bg-forest-800 hover:bg-forest-700 border border-brass-500/40 text-xs font-semibold text-ivory-100 transition">
+          Stäng ✕
+        </button>
+      </div>
+
+      <div class="relative w-full rounded-2xl overflow-hidden border border-brass-500/45 bg-forest-900 shadow-2xl flex items-center justify-center max-h-[76vh]">
+        <img id="lightboxImage" src="" alt="" class="max-h-[76vh] w-auto object-contain" />
+        <button type="button" onclick="stepLightbox(-1)" aria-label="Föregående bild" class="absolute left-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-forest-950/85 hover:bg-forest-800 border border-brass-500/45 text-ivory-50 flex items-center justify-center text-xl transition">
+          ‹
+        </button>
+        <button type="button" onclick="stepLightbox(1)" aria-label="Nästa bild" class="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-forest-950/85 hover:bg-forest-800 border border-brass-500/45 text-ivory-50 flex items-center justify-center text-xl transition">
+          ›
+        </button>
+      </div>
+
+      <p id="lightboxCaption" class="mt-4 text-center font-serif text-xl sm:text-2xl text-ivory-50"></p>
+    </div>
+  </div>
+
+  <!-- TOAST-NOTIS -->
+  <div id="toastBox" class="fixed bottom-5 right-5 z-50 hidden px-4 py-3 rounded-2xl bg-forest-950/95 border border-brass-500/60 text-ivory-50 text-xs sm:text-sm shadow-2xl backdrop-blur-md"></div>
+
+  <script>
+    // =========================================================================
+    // 4. MINNEN FRÅN FÖRR — SAMTLIGA 43 ARKIVBILDER I ETT ENHETLIGT GALLERI
+    // =========================================================================
+    const baseMemories = [
+      // Prag & Dopeyeah
+      { src: '7e95bd89.jpeg', title: 'Dopeyeah Prag — Överraskningsevent fredag 15:00' },
+      { src: 'b96f88ba.jpeg', title: 'Dopeyeah Arena — Lagduell i Prag' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.15 (2).jpeg', fallbacks: ['WhatsApp Image 2026-11-18 at 04.33.15 (2)_2.jpeg'], title: 'Prag-rekognosering inför Yngsjö Open 2027' },
+
+      // Officiella lagporträtt & vandringspokalen
+      { src: 'f79054a7.jpeg', fallbacks: ['watermarked_img_10466989843910586616.jpg', 'WhatsApp Image 2026-11-18 at 04.33.14 (11)_2.jpeg', 'WhatsApp Image 2026-11-18 at 04.33.14 (11).jpeg'], title: 'Team HHH — Officiellt lagporträtt • Yngsjö Open' },
+      { src: '11a32b87.jpeg', fallbacks: ['watermarked_img_9059187788242090440.jpg', 'WhatsApp Image 2026-11-18 at 04.33.14 (4)_2.jpeg', 'WhatsApp Image 2026-11-18 at 04.33.14 (4).jpeg'], title: 'Team HGC — Officiellt lagporträtt • Yngsjö Open' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (20).jpeg', fallbacks: ['WhatsApp Image 2026-11-18 at 04.33.14 (18).jpeg'], title: 'Yngsjö Open Trophy — Den officiella vandringspokalen' },
+
+      // Klassiska ögonblick från Yngsjö Open
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16 (5).jpeg', title: 'Segerjubel på fairway i klubbmundering' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16 (6).jpeg', title: 'Kärlek vid första bucklan' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16 (7).jpeg', title: 'Tältfest & sen kväll i Yngsjö' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16 (8).jpeg', title: 'Eftersnack vid Pine Restaurant' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16 (9).jpeg', title: 'Långbord & taktikgenomgång' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16 (10).jpeg', title: 'Rock’n’roll med vandringspokalen' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16 (11).jpeg', title: 'Scenljus & strålkastare på kvällsfesten' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16 (12).jpeg', title: 'Bucklan i tryggt förvar' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16.jpeg', title: 'Hela startfältet runt middagsbordet' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.17 (1).jpeg', title: 'Solnedgång & bubbel vid stranden' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.15 (5).jpeg', title: 'Glitter & show på altanen' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16 (1).jpg', title: 'Morgonrockssvingen i simulatorn' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14.jpeg', title: 'VIP-ankomst: Destination Yngsjö' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (21).jpeg', title: 'Hela gänget samlat vid havet' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.15 (1).jpeg', fallbacks: ['WhatsApp Image 2026-11-18 at 04.34.15 (1)_2.jpeg'], title: 'Yngsjö Open-piké & pokal i loungen' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.15 (2).jpeg', fallbacks: ['WhatsApp Image 2026-11-18 at 04.34.15 (2)_2.jpeg'], title: 'Skål på första tee' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.15.jpeg', fallbacks: ['WhatsApp Image 2026-11-18 at 04.33.15_2.jpeg'], title: 'Bubbel i golfsimulatorn' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (19).jpeg', title: 'Skål vid havet i Yngsjö' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.15 (1).jpeg', title: 'Kusthäng under parasollet' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.15 (3).jpeg', fallbacks: ['WhatsApp Image 2026-11-18 at 04.34.15 (3)_2.jpeg'], title: 'Gott humör i klubbhuset' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.15 (4).jpeg', title: 'Yngsjö Open-keps & fokus' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.15.jpeg', title: 'Klubbhusgänget efter rundan' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.34.16 (2).jpeg', title: 'Taktiksnack vid bordet' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.13.jpeg', title: 'Morgonbad i Yngsjö' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (1).jpeg', title: 'Vandringspokalen i klubbhuset' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (2).jpeg', title: 'Poolhäng & uppladdning' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (3).jpeg', title: 'Skål vid kusten' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (5).jpeg', title: 'Incheckning inför turneringsstart' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (6).jpeg', title: 'Spelarbussen mot banan' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (7).jpeg', title: 'Fokus inför utslag' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (8).jpeg', title: 'Halvtidspaus på terrassen' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (9).jpeg', title: 'Trackman-träning & svinganalys' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (10).jpeg', title: 'Middag & skål vid bordet' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (12).jpeg', title: 'Bubbel vid havet' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (13).jpeg', title: 'Bussresan mot golfbanan' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (14).jpeg', title: 'Bygge av Trackman-tältet' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (15).jpeg', title: 'Solig lagbild på tee' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (16).jpeg', title: 'Terrasshäng i Yngsjö' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (17).jpeg', title: 'Hela gänget samlat på middag' },
+      { src: 'WhatsApp Image 2026-11-18 at 04.33.14 (18).jpeg', title: 'Närbild på Yngsjö Open-pokalen' }
+    ];
+
+    let allGalleryPhotos = [];
+    let lightboxIndex = 0;
+
+    function renderGallery() {
+      allGalleryPhotos = [...baseMemories];
+      const countEl = document.getElementById('totalPhotoCount');
+      if (countEl) countEl.textContent = allGalleryPhotos.length;
+
+      const grid = document.getElementById('galleryGrid');
+      grid.innerHTML = allGalleryPhotos.map((item, idx) => {
+        const fbJson = escapeHtml(JSON.stringify(item.fallbacks || []));
+        const safeTitle = escapeHtml(item.title);
+        return `
+        <button
+          type="button"
+          onclick="openLightbox(${idx})"
+          class="group relative rounded-2xl overflow-hidden bg-forest-950/90 border border-brass-500/30 hover:border-brass-300/80 aspect-[4/3] text-left shadow-xl transition focus:outline-none focus:ring-2 focus:ring-brass-400"
+        >
+          <img
+            src="${item.src}"
+            alt="${safeTitle}"
+            loading="lazy"
+            data-fallbacks="${fbJson}"
+            onerror="handleImageFallback(this, '${safeTitle}')"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-forest-950/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
+          <div class="absolute bottom-3 left-3.5 right-3.5 opacity-0 group-hover:opacity-100 transition duration-300">
+            <span class="block text-sm font-medium text-ivory-50 leading-snug line-clamp-1">${safeTitle}</span>
+          </div>
+        </button>
+      `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // 6. LIGHTBOX & RSVP-FORMULÄR
+    // =========================================================================
+    function openLightbox(idx) {
+      lightboxIndex = idx;
+      updateLightbox();
+      document.getElementById('lightboxModal').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function openLightboxBySrc(src, title) {
+      const found = allGalleryPhotos.findIndex(m => m.src === src);
+      if (found >= 0) {
+        openLightbox(found);
+        return;
+      }
+      const lbImg = document.getElementById('lightboxImage');
+      lbImg.dataset.fbIndex = '0';
+      lbImg.dataset.fallbacks = '[]';
+      lbImg.onerror = () => handleImageFallback(lbImg, title);
+      lbImg.src = src;
+      document.getElementById('lightboxCaption').textContent = title;
+      document.getElementById('lightboxCounter').textContent = 'Prag 2027 • Schema';
+      document.getElementById('lightboxModal').classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function updateLightbox() {
+      const item = allGalleryPhotos[lightboxIndex];
+      if (!item) return;
+      const lbImg = document.getElementById('lightboxImage');
+      lbImg.dataset.fbIndex = '0';
+      lbImg.dataset.fallbacks = JSON.stringify(item.fallbacks || []);
+      lbImg.onerror = () => handleImageFallback(lbImg, item.title);
+      lbImg.src = item.src;
+      document.getElementById('lightboxCaption').textContent = item.title;
+      document.getElementById('lightboxCounter').textContent = `${lightboxIndex + 1} / ${allGalleryPhotos.length}`;
+    }
+
+    function stepLightbox(delta) {
+      if (!allGalleryPhotos.length) return;
+      lightboxIndex = (lightboxIndex + delta + allGalleryPhotos.length) % allGalleryPhotos.length;
+      updateLightbox();
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('lightboxModal');
+      if (modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') stepLightbox(1);
+      if (e.key === 'ArrowLeft') stepLightbox(-1);
+    });
+
+    // Interaktiv RSVP som uppdaterar truppen direkt
+    document.getElementById('rsvpForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('rsvpName');
+      const teamSelect = document.getElementById('rsvpTeam');
+      const hcpInput = document.getElementById('rsvpHcp');
+      const noteInput = document.getElementById('rsvpNote');
+
+      const name = nameInput.value.trim();
+      if (!name) return;
+
+      const team = teamSelect.value;
+      const hcpText = hcpInput.value ? `HCP ${hcpInput.value}` : '';
+      const noteText = noteInput.value.trim();
+      const metaParts = [hcpText, noteText].filter(Boolean);
+      const meta = metaParts.length ? metaParts.join(' • ') : 'Bekräftad 2027';
+
+      const existing = rosters[team].find(p => p.name.toLowerCase() === name.toLowerCase());
+      if (existing) {
+        existing.meta = meta;
+      } else {
+        rosters[team].push({ name, meta });
+      }
+
+      renderRosters();
+      e.target.reset();
+      showToast(`${name} är nu bekräftad i Team ${team.toUpperCase()}!`);
+      document.getElementById('format-lag').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Mobilmeny
+    document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    // Toast-meddelande
+    let toastTimeout;
+    function showToast(text) {
+      const box = document.getElementById('toastBox');
+      box.textContent = text;
+      box.classList.remove('hidden');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => box.classList.add('hidden'), 3500);
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, m => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[m]));
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      verifyTrophyBackground();
+      renderRosters();
+      renderGallery();
+    });
+  </script>
+</body>
+</html>
